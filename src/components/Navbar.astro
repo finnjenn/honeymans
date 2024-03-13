@@ -1,0 +1,191 @@
+<nav>
+    <button id="nav-toggle" aria-controls="primary-nav" aria-expanded="false">
+        <span class="sr-only">Menu</span>
+      </button>
+    <a href="/" id="logo-link">
+        <img src="/images/paw.svg" alt="Logo" id="logo">
+        <span id="logo-text">honeyman's</span>
+    </a>
+    <ul id="primary-nav" data-mobile-nav-visible="false">
+        <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="#pups" class="nav-link">Puppies</a></li>
+        <li class="nav-item"><a href="#about" class="nav-link">About Us</a></li>
+        <li class="nav-dropdown nav-item">
+            More
+            <img src="/images/dropdown.svg" alt="Dropdown Arrow" class="dropdown-img">
+            <ul class="dropdown-menu">
+                <li class="dropdown-item"><a href="">Puppy Application</a></li>
+                <li class="dropdown-item"><a href="">Male vs. Female</a></li>
+                <li class="dropdown-item"><a href="">Older Puppies</a></li>
+                <li class="dropdown-item"><a href="">10 Commandments</a></li>
+            </ul>
+        </li>
+        <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+</nav>
+
+<style>
+    nav {
+        display: flex;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 999;
+        background-color: #FFD400;
+        color: black;
+        font-family: "Merriweather", serif;
+        font-style: italic;
+        padding: 0.5rem;
+    }
+    a {
+        color: black;
+        text-decoration: none;
+    }
+    #nav-toggle {
+        display: none;
+        cursor: pointer;
+        z-index: 9999;
+    }
+    #logo {
+        display: inline;
+        padding-right: 0.5rem;
+    }
+    #logo-text {
+        font-style: italic;
+        font-size: 1.75rem;
+    }
+    #logo-text {
+        margin: auto 0;
+    }
+    #primary-nav {
+        display: flex;
+        align-items: baseline;
+        margin-left: auto;
+    }
+    .nav-item {
+        cursor: pointer;
+        font-size: 1.1rem;
+        padding: 0.25rem 1rem;
+        border-bottom: 2px solid #FFD400;
+        transition: 150ms ease-in-out;
+    }
+    .nav-item:hover {
+        border-bottom: 2px solid black;
+    }
+    .nav-dropdown {
+        position: relative;
+    }
+    .dropdown-img {
+        width: 1rem;
+        display: inline;
+    }
+    .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 2rem;
+        left: -50%;
+        width: 200%;
+        background-color: #FFD400;
+        padding: 1rem 0;
+        text-align: center;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:active .dropdown-menu {
+        display: block;
+    }
+    .dropdown-item {
+        padding: 0.5rem;
+        transition: 150ms ease-in-out;
+    }
+    .dropdown-item:hover {
+        opacity: 0.8;
+        transform: translateY(-2px);
+    }
+    @media (max-width: 48rem) {
+        #nav-toggle {
+            display: block;
+            position: fixed;
+            top: 0.65rem;
+            right: 0.75rem;
+            background-color: transparent;
+            background-image: url("/images/menu.svg");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            width: 2rem;
+            height: 2rem;
+            border: none;
+        }
+        #nav-toggle[aria-expanded="true"] {
+            background-image: url("/images/x.svg");
+        }
+        #primary-nav {
+            z-index: 999;
+            position: fixed;
+            background-color: #FFD400;
+            margin-top: 3rem;
+            /* Change last percentage for how far menu slides out */
+            inset: 0 0 0 30%;
+            transform: translateX(100%);
+            flex-direction: column;
+            align-items: center;
+            /* Changes how fast menu slides out */
+            transition: 400ms ease-in-out;
+        }
+        #primary-nav[data-mobile-nav-visible="true"] {
+            transform: translateX(0%);
+        }
+        .nav-item {
+            padding: 0.25rem 0;
+            margin: 0.5rem;
+            /* display: block; */
+        }
+        .nav-dropdown {
+            text-align: center;
+        }
+        .nav-dropdown:hover {
+            border-bottom: #FFD400 2px solid;
+        }
+        .dropdown-img {
+            /* transform: rotate(-90deg); */
+        }
+        /* For visible dropdown */
+        .dropdown-menu {
+            display: block;
+            position: static;
+            margin-top: 1rem;
+            width: 100%;
+            padding: 0rem;
+            /* border: 1px solid red; */
+        }
+        /* For hoverable dropdown */
+        /* .nav-dropdown:hover .dropdown-menu,
+        .nav-dropdown:active .dropdown-menu {
+            display: block;
+            left: 5rem;
+        } */
+        .dropdown-item {
+            padding: 0.25rem 0.5rem;
+            border-left: #FFD400 solid 2px;
+        }
+        .dropdown-item:hover {
+            border-left: black solid 2px;
+        }
+    }
+</style>
+
+<script>
+    const primaryNav = document.querySelector("#primary-nav");
+    const navToggle = document.querySelector("#nav-toggle");
+    navToggle.addEventListener("click", () => {
+      console.log("nav toggle clicked");
+      const isNavVisible = primaryNav.getAttribute("data-mobile-nav-visible");
+      if (isNavVisible === "false") {
+        primaryNav.setAttribute("data-mobile-nav-visible", "true");
+        navToggle.setAttribute("aria-expanded", "true");
+      } else {
+        primaryNav.setAttribute("data-mobile-nav-visible", "false");
+        navToggle.setAttribute("aria-expanded", "false");
+      }
+    });
+  </script>

@@ -1,0 +1,131 @@
+<section id="pups">
+    <h1>The Pups</h1>
+    <img src="/images/dog1.jpg" alt="" id="dog1-img" class="pups-io">
+    <h2 class="pups-io">Peaunut</h2>
+    <p class="pups-io">Meet Peanut, the adorable Dachshund with a big personality packed into a tiny frame! With his long, sausage-like body and expressive eyes, Peanut is the epitome of charm and mischief. Always ready for a playful adventure or a cozy snuggle on the couch, Peanut will wiggle his way into your heart with his unwavering loyalty and affectionate nature. Get ready for endless laughter and love as you welcome Peanut into your home, where every day is filled with joy and tail-wagging fun!</p>
+    <span class="pups-io">- FEBRUARY 22, 2024 -</span>
+    <div id="dog2">
+        <img src="/images/dog4.jpg" alt="" id="dog2-img" class="pups-io">
+        <div class="text-box">
+            <h2 class="pups-io">Coco</h2>
+            <p class="pups-io">Introducing Coco, the elegant Dachshund with a coat as rich and luxurious as chocolate! With her graceful gait and soulful eyes, Coco exudes sophistication and grace. Whether she's strutting her stuff on a leisurely walk or curling up beside you for a lazy afternoon nap, Coco brings warmth and comfort to every moment. Prepare to be captivated by Coco's gentle spirit and unwavering devotion as she becomes your loyal companion and steadfast friend.</p>
+            <span class="pups-io">- DECEMBER 12, 2023 -</span>
+        </div>
+    </div>
+    <div id="dog3">
+        <div class="text-box">
+            <h2 class="pups-io">Oscar</h2>
+            <p class="pups-io">Say hello to Oscar, the charismatic Dachshund with a heart of gold and a spirit as bold as brass! With his playful antics and boundless energy, Oscar is always the life of the party, spreading joy and laughter wherever he goes. Whether he's chasing after his favorite toy or cuddling up beside you for a cozy movie night, Oscar's zest for life is infectious. Get ready for endless adventures and unforgettable memories as you embark on a journey filled with love and laughter alongside your faithful friend, Oscar.</p>
+            <span class="pups-io">- JANUARY 4, 2024 -</span>
+        </div>
+        <img src="/images/dog5.jpg" alt="" id="dog3-img" class="pups-io">
+    </div>
+</section>
+
+<style>
+    section {
+        background-color: #FFF6CC;
+        scroll-margin-top: 3rem;
+    }
+    h1 {
+        font-family: "Merriweather", serif;
+        font-style: italic;
+        color: black;
+        font-size: 2rem;
+        text-align: center;
+        padding: 2rem 0;
+        margin-top: 1rem;
+        text-decoration: underline 2px solid black;
+    }
+    .pups-io {
+        opacity: 0;
+        transition: 800ms;
+    }
+    h2 {
+        font-family: "Merriweather", serif;
+        font-style: italic;
+        font-weight: 300;
+        font-size: 1.5rem;
+        color: black;
+        text-align: center;
+        padding: 1rem 0;
+    }
+    p {
+        color: black;
+        font-family: "Merriweather", serif;
+        font-style: italic;
+        font-weight: 700;
+        text-align: center;
+        margin: 0 3rem;
+        line-height: 2rem;
+        text-wrap: balance;
+    }
+    span {
+        color: black;
+        font-family: "Merriweather", serif;
+        font-style: italic;
+        display: block;
+        text-align: center;
+        padding: 1rem 0;
+    }
+    .text-box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    #dog1-img {
+        width: 30rem;
+        margin: 0 auto;
+    }
+    #dog2,
+    #dog3 {
+        display: flex;
+        padding: 2rem
+    }
+    #dog2-img,
+    #dog3-img {
+        width: 25rem;
+        aspect-ratio: 1;
+        object-fit: cover;
+        margin: 0 auto;
+    }
+    @media (max-width: 48rem) {
+        #dog2 {
+            flex-direction: column;
+        }
+        #dog3 {
+            flex-direction: column-reverse;
+        }
+    }
+    @media (max-width: 600px) {
+        #dog2,
+        #dog3 {
+            padding: 0;
+        }
+        p {
+            margin: 0 1rem;
+        }
+    }
+    .show {
+        opacity: 1;
+    }
+</style>
+
+<script>
+    const content = document.querySelectorAll(".pups-io");
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            // if (entry.isIntersecting) entry.target.classList.add("show");
+            entry.target.classList.toggle("show", entry.isIntersecting);
+        })
+    },
+    {
+        threshold: 0.3
+    }
+    )
+
+    content.forEach(item => {
+        observer.observe(item)
+    })
+</script>
